@@ -1,4 +1,4 @@
 ## Usage
 ```
-python -m pip install https://github.com/Keling-Wang/causation_rating.git
+python -m pip install git+https://github.com/Keling-Wang/causation_rating.git
 ```
