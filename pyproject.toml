@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["causation_rating"]
+
+[project]
+name = "causation_rating"
+version = "0.1"
+authors = [
+  { name="Keling Wang", email="keling.wang@erasmusmc.nl" },
+]
+description = "Training and prediction for a BioBERT-derived model tasked with strength of causation classification in diabetes guideline context."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  "word_forms",
+  "nlpaug",
+  "optuna",
+  "optuna-integration",
+  "torch",
+  "transformers",
+  "scikit-learn",
+  "scipy",
+  "pandas",
+  "numpy",
+]
+
+[project.urls]
+Homepage = "https://github.com/pypa/sampleproject"
+Issues = "https://github.com/pypa/sampleproject/issues"
