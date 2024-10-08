@@ -1,11 +1,13 @@
 # causation_rating
 
-![Transformers](https://raw.githubusercontent.com/huggingface/transformers/main/docs/source/imgs/transformers_logo_name.png)
+![Transformers]([https://raw.githubusercontent.com/huggingface/transformers/main/docs/source/imgs/transformers_logo_name.png](https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo-with-title.png))
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) 
-[![Python Version](https://img.shields.io/badge/python-3.x-blue.svg)](https://www.python.org/) 
+[![Python Version](https://img.shields.io/badge/python-%3E%3D3.8-blue)](https://www.python.org/)
 [![Release Version](https://img.shields.io/github/v/release/username/repository)](https://github.com/username/repository/releases)
-[![Transformers Version](https://img.shields.io/badge/transformers-4.x-orange.svg)](https://huggingface.co/docs/transformers/)
-[![Torch Version](https://img.shields.io/badge/torch-1.9+-red.svg)](https://pytorch.org/)
+[![Transformers Version](https://img.shields.io/badge/transformers-4.45.1-orange.svg)](https://huggingface.co/docs/transformers/)
+[![scikit-learn Version](https://img.shields.io/badge/scikit--learn-1.2.2-yellow)](https://scikit-learn.org/)
+[![Optuna Version](https://img.shields.io/badge/optuna-4.0.0-blue)](https://optuna.org/)
+[![nlpaug Version](https://img.shields.io/badge/nlpaug-1.1.11-purple)](https://github.com/makcedward/nlpaug)
 
 
 ## Description
