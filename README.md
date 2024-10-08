@@ -1,6 +1,6 @@
 # causation_rating
 
-![Transformers](🤗)
+🤗
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) 
 [![Release Version](https://img.shields.io/github/v/release/username/repository)](https://github.com/username/repository/releases)
 [![Python Version](https://img.shields.io/badge/python-%3E%3D3.8-blue)](https://www.python.org/)
@@ -46,8 +46,8 @@ python -m pip install git+https://github.com/Keling-Wang/causation_rating.git
 Alternatively, you can clone this repository and install manually:
 
 ```bash
-git clone https://github.com/username/repository.git
-cd repository
+git clone https://github.com/Keling-Wang/causation_rating.git
+cd causation_rating
 pip install -e .
 ```
 
