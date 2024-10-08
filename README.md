@@ -1,6 +1,6 @@
 # causation_rating
 
-![Transformers]([https://raw.githubusercontent.com/huggingface/transformers/main/docs/source/imgs/transformers_logo_name.png](https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo-with-title.png))
+![Transformers](https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo-with-title.png)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) 
 [![Python Version](https://img.shields.io/badge/python-%3E%3D3.8-blue)](https://www.python.org/)
 [![Release Version](https://img.shields.io/github/v/release/username/repository)](https://github.com/username/repository/releases)
