@@ -1,5 +1,7 @@
-from .constants import *
-from .constants import _set_config
+from . import constants
 
 def set_config(**kwargs):
-    _set_config(**kwargs)
+    constants._set_config(**kwargs)
+
+def __getattr__(name):
+    return getattr(constants, name)
