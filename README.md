@@ -33,8 +33,8 @@ This model predicts strength of causation (SoC) labels based on the text inputs 
 
 ## Features
 
-- Make predictions: based on pretrained `dr1` and `dr2` models, `causation_rating.predict_from_pretrained` allows one directly uses the two models maintained on 🤗 Hugging Face to make predictions based on new sentences.
-- Reproduce training process: `causation_rating.bayesian_optimization` module allows one reproduces Bayesian hyperparameter tuning process to find best parameters, based on datasets maintained on 🤗 Hugging Face. `causation_rating.model_finaltraining` allows one reproduces final training process on the entire dataset after hyperparameter tuning.
+- Make predictions: based on pretrained `dr1` and `dr2` models, `causation_rating.predict_from_pretrained` allows one directly uses the two models maintained on `🤗 Hugging Face` to make predictions based on new sentences.
+- Reproduce training process: `causation_rating.bayesian_optimization` module allows one reproduces Bayesian hyperparameter tuning process to find best parameters, based on datasets maintained on `🤗 Hugging Face`. `causation_rating.model_finaltraining` allows one reproduces final training process on the entire dataset after hyperparameter tuning.
 
 ## Installation
 
@@ -66,3 +66,37 @@ causation_rating.set_config(DEVICE = torch.device("cuda"),
                             )
 # ... [Your code here]
 ```
+## Constants defined and used in this code
+Here you can find default values and descriptions for all the constants defined in the package. See also `constants.py`.
+
+#### Basic raining arguments
+ - `SEED`: seed used across all places where a seed for random initiation/splitting is required. Default to `114514`.
+ - `DEVICE`: device used for model prediction and training. Default to `torch.device("cuda" if torch.cuda.is_available() else "cpu")`
+ - `EPOCH`: epoches for model training. Default to `8`. 
+ - `BATCH_SIZE`: batch size for model training. Default to `128`.
+ - `DIST_MATRIX` distance matrix used in the ordinal log loss function. Default to:
+```python
+torch.tensor([[0, 2, 3.5, 4.5, 5.5],
+              [2, 0, 1.5, 2.5, 3.5],
+              [3.5, 1.5, 0, 1, 2],
+              [4.5, 2.5, 1, 0, 1],
+              [5.5, 3.5, 2, 1, 0]])
+```
+Also see [this paper](https://aclanthology.org/2022.coling-1.407/) for details.
+
+#### Hyperparameter tuning searching space
+ - `LR_SEARCH`: a range of learning rate used in Bayesian hyperparameter optimization. Default to `[5e-6, 8e-5]`. 
+ - `WEIGHT_DECAY_SEARCH`: a continuous range of weight decay used in Bayesian hyperparameter optimization. Default to `[0.035, 0.15]`.
+ - `WARMUP_RATIO_SEARCH`: a continuous range of warm-up ratio used in Bayesian hyperparameter optimization. Default to `[0.30, 0.50]`.
+ - `LR_SCHEDULER_POWER_SEARCH`: a continuous range of the power to the polynomial learning rate scheduler used in Bayesian hyperparameter optimization. Default to `[1.0, 3.0]`.
+ - `OLL_POWER_SEARCH`: a set of vaules of the power to the error measures used in the ordinal log loss function. Default to `[2.0, 2.25, 2.5, 2.75, 3.0]`.
+
+#### Paths
+ - `MODEL_PATH_AUG`: path to the model used in data augmentation. Default to `'dmis-lab/biobert-base-cased-v1.2'`. This is a `🤗 Hugging Face` path.
+ - `MODEL_PATH_PRE`: path to the pretrained model to be fine-tuned. Default to `'kelingwang/bert-causation-rating-pubmed'`. This is a `🤗 Hugging Face` path.
+ - `MODEL_PATH_FINALUSE`: path to the model for final prediction. Default to `'kelingwang/bert-causation-rating-dr1'`. This is a `🤗 Hugging Face` path.
+
+ - `DATASET_PATH`： dataset used for training. Default to `'https://huggingface.co/datasets/kelingwang/causation_strength_rating/resolve/main/rating_dr1.csv'`.
+ - `IMPORTANT_WORD_PATH`: word list indicating important causal linking words. Default to `'https://huggingface.co/datasets/kelingwang/causation_strength_rating/resolve/main/linkingwords_complete.csv'`. 
+ - `OUTPUT_PATH`: path for outputs. Default to `'./'`.
+ - `TEST_DATA_NAME`: user-defined name for the test dataset that will be held out. Default to `'test_dr1.csv'`.
