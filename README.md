@@ -12,13 +12,12 @@
 
 ## Description
 
-This package contains all codes used in the training, evaluation, and prediction process of [`bert-causation-rating-dr1`](https://huggingface.co/kelingwang/bert-causation-rating-dr1) and [`bert-causation-rating-dr2`](https://huggingface.co/kelingwang/bert-causation-rating-dr2) models. 
+This package contains all codes used in the training, evaluation, and prediction process of [`bert-causation-rating-drt`](https://huggingface.co/kelingwang/bert-causation-rating-drt) model. 
 
-These models are fine-tuned [biobert-base-cased-v1.2](https://huggingface.co/dmis-lab/biobert-base-cased-v1.2) models on two small sets of manually annotated texts with causation labels. They are tasked with classifying a sentence into different levels of strength of causation expressed in this sentence.
+This model is fine-tuned [biobert-base-cased-v1.2](https://huggingface.co/dmis-lab/biobert-base-cased-v1.2) model on a small set of manually annotated texts with causation labels. It is tasked with classifying a sentence into different levels of strength of causation expressed in this sentence.
 Before tuning, the `biobert-base-cased-v1.2` model is fine-tuned on a dataset containing causation labels from a published paper. This model starts from pre-trained [`kelingwang/bert-causation-rating-pubmed`](https://huggingface.co/kelingwang/bert-causation-rating-pubmed). For more information please view the link.
 
-The sentences in the dataset were rated independently by two researchers. The `dr1` version is tuned on the set of sentences with labels rated by Rater 1, and
-the `dr2` version is tuned on the set of sentences with labels rated by Rater 2 and 3.
+The sentences in the dataset were rated independently by two researchers.
 
 ### Intended use and limitations of the model
 
@@ -33,7 +32,7 @@ This model predicts strength of causation (SoC) labels based on the text inputs 
 
 ## Features
 
-- Make predictions: based on pretrained `dr1` and `dr2` models, `causation_rating.predict_from_pretrained` allows one directly uses the two models maintained on `🤗 Hugging Face` to make predictions based on new sentences.
+- Make predictions: based on pretrained `drt` models, `causation_rating.predict_from_pretrained` allows one directly uses the two models maintained on `🤗 Hugging Face` to make predictions based on new sentences.
 - Reproduce training process: `causation_rating.bayesian_optimization` module allows one reproduces Bayesian hyperparameter tuning process to find best parameters, based on datasets maintained on `🤗 Hugging Face`. `causation_rating.model_finaltraining` allows one reproduces final training process on the entire dataset after hyperparameter tuning.
 
 ## Installation
@@ -62,7 +61,7 @@ import torch
 # You always need to set constants before using the model. For details, see the `constants.py` file and `README.md`.
 causation_rating.set_config(DEVICE = torch.device("cuda"), 
                             #BATCH_SIZE = 128,
-                            MODEL_PATH_FINALUSE = 'kelingwang/bert-causation-rating-dr2',
+                            MODEL_PATH_FINALUSE = 'kelingwang/bert-causation-rating-drt',
                             )
 # ... [Your code here]
 ```
@@ -94,9 +93,9 @@ Also see [this paper](https://aclanthology.org/2022.coling-1.407/) for details.
 #### Paths
  - `MODEL_PATH_AUG`: path to the model used in data augmentation. Default to `'dmis-lab/biobert-base-cased-v1.2'`. This is a `🤗 Hugging Face` path.
  - `MODEL_PATH_PRE`: path to the pretrained model to be fine-tuned. Default to `'kelingwang/bert-causation-rating-pubmed'`. This is a `🤗 Hugging Face` path.
- - `MODEL_PATH_FINALUSE`: path to the model for final prediction. Default to `'kelingwang/bert-causation-rating-dr1'`. This is a `🤗 Hugging Face` path.
+ - `MODEL_PATH_FINALUSE`: path to the model for final prediction. Default to `'kelingwang/bert-causation-rating-drt'`. This is a `🤗 Hugging Face` path.
 
- - `DATASET_PATH`： dataset used for training. Default to `'https://huggingface.co/datasets/kelingwang/causation_strength_rating/resolve/main/rating_dr1.csv'`.
+ - `DATASET_PATH`： dataset used for training. Default to `'https://huggingface.co/datasets/kelingwang/causation_strength_rating/resolve/main/rating_drt.csv'`.
  - `IMPORTANT_WORD_PATH`: word list indicating important causal linking words. Default to `'https://huggingface.co/datasets/kelingwang/causation_strength_rating/resolve/main/linkingwords_complete.csv'`. 
  - `OUTPUT_PATH`: path for outputs. Default to `'./'`.
- - `TEST_DATA_NAME`: user-defined name for the test dataset that will be held out. Default to `'test_dr1.csv'`.
+ - `TEST_DATA_NAME`: user-defined name for the test dataset that will be held out. Default to `'test_drt.csv'`.
